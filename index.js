@@ -11,6 +11,12 @@ const PORT = process.env.PORT || 5000; // Using port that server has been create
 //   res.sendFile(path.join(__dirname, "public", "index.html"));
 // });
 
+// Body parser middleware
+app.use(express.json());
+app.use(express.urlencoded({
+  extended: false
+}));
+
 // Set static folder
 app.use(express.static(path.join(__dirname, "public")));
 
