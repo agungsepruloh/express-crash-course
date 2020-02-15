@@ -59,4 +59,21 @@ router.put("/:id", (req, res) => {
     });
   }
 });
+
+// Delete member
+router.delete("/:id", (req, res) => {
+  const found = members.some(member => member.id === parseInt(req.params.id));
+  if (found) {
+    res.json({
+      msg: "Member updated",
+      members: members.filter(member => member.id !== parseInt(req.params.id))
+      // or you can use members.pop instead of just filter
+    });
+  } else {
+    res.status(400).json({
+      msg: `No member with the id of ${req.params.id}`
+    });
+  }
+});
+
 module.exports = router;
